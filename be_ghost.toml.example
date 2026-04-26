@@ -1,0 +1,15 @@
+# Copy this to be_ghost.toml in your project root or ~/.be_ghost.toml.
+# Settings are loaded as defaults for both the CLI and BeGhost(**load()).
+
+[defaults]
+profile = "win11_chrome"
+lite = true
+headless = true
+timeout_ms = 30000
+# proxy = "http://user:pass@host:8080"
+# trace = "trace.zip"
+# har_record = "capture.har"
+# max_bytes = 10485760
+
+[storage]
+state = "state.json"

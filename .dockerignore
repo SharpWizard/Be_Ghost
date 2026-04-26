@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+.gitignore
+.venv
+venv
+build
+dist
+*.egg-info
+state.json
+cookies.json
+sannysoft.html
+examples/__pycache__

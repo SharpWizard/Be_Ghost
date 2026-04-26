@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "be_ghost"
+version = "0.3.0"
+description = "Ultra-lightweight stealth browser on top of Playwright."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Be_Ghost contributors" }]
+dependencies = [
+    "playwright>=1.45.0",
+]
+
+[project.optional-dependencies]
+http = ["curl_cffi>=0.7.0"]
+parse = ["selectolax>=0.3.21"]
+lite = ["curl_cffi>=0.7.0", "selectolax>=0.3.21", "quickjs>=1.19"]
+cache = ["diskcache>=5.6.0"]
+sitemap = ["lxml>=5.0"]
+mcp = ["mcp>=1.0.0"]
+test = ["pytest>=7", "pytest-asyncio>=0.23"]
+full = [
+    "curl_cffi>=0.7.0",
+    "selectolax>=0.3.21",
+    "quickjs>=1.19",
+    "diskcache>=5.6.0",
+    "lxml>=5.0",
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+be_ghost = "be_ghost.cli:main"
+be_ghost_mcp = "be_ghost.mcp_server:main"
+
+[project.entry-points.pytest11]
+be_ghost = "be_ghost.pytest_plugin"
+
+[tool.setuptools.packages.find]
+include = ["be_ghost*"]
+
+[tool.setuptools.package-data]
+be_ghost = ["py.typed"]

@@ -1,0 +1,45 @@
+name: detect
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly: Mondays 06:00 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "be_ghost/**"
+      - ".github/workflows/detect.yml"
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: install
+        run: |
+          pip install -e ".[full,test]"
+          playwright install --with-deps chromium
+
+      - name: run detection self-test
+        run: |
+          python - <<'EOF'
+          from be_ghost import BeGhost
+          from be_ghost.detect import run, report
+          with BeGhost(lite=False) as g:
+              results = run(g)
+          out = report(results)
+          print(out)
+          with open("$GITHUB_STEP_SUMMARY", "a", encoding="utf-8") as f:
+              f.write("```\n" + out + "\n```\n")
+          # fail if overall < 70%
+          import sys
+          overall = sum(r.score for r in results) / max(1, len(results))
+          sys.exit(0 if overall >= 0.7 else 1)
+          EOF
