@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Be_Ghost logo">
+  <defs>
+    <radialGradient id="bgGrad" cx="0.5" cy="0.42" r="0.7">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </radialGradient>
+    <linearGradient id="ghostGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="55%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="eyeGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="6" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="eyeBlur">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="512" height="512" rx="96" fill="url(#bgGrad)"/>
+
+  <!-- Subtle scanlines for tech feel -->
+  <g opacity="0.05" stroke="#7dd3fc" stroke-width="1">
+    <line x1="0" y1="80"  x2="512" y2="80"/>
+    <line x1="0" y1="180" x2="512" y2="180"/>
+    <line x1="0" y1="280" x2="512" y2="280"/>
+    <line x1="0" y1="380" x2="512" y2="380"/>
+    <line x1="0" y1="480" x2="512" y2="480"/>
+  </g>
+
+  <!-- Ghost body: rounded dome top, 6-hump wavy bottom -->
+  <g filter="url(#softShadow)">
+    <path d="M 256 96
+             C 158 96, 96 168, 96 248
+             L 96 388
+             Q 120 416, 144 388
+             Q 168 416, 192 388
+             Q 216 416, 240 388
+             Q 272 416, 296 388
+             Q 320 416, 344 388
+             Q 368 416, 392 388
+             Q 400 396, 416 388
+             L 416 248
+             C 416 168, 354 96, 256 96 Z"
+          fill="url(#ghostGrad)"
+          opacity="0.92"/>
+  </g>
+
+  <!-- Eyes: dark sockets with cyan glow inside -->
+  <g>
+    <ellipse cx="206" cy="232" rx="22" ry="30" fill="#0b1220"/>
+    <ellipse cx="306" cy="232" rx="22" ry="30" fill="#0b1220"/>
+    <ellipse cx="206" cy="232" rx="10" ry="14" fill="url(#eyeGlow)" filter="url(#eyeBlur)" opacity="0.95"/>
+    <ellipse cx="306" cy="232" rx="10" ry="14" fill="url(#eyeGlow)" filter="url(#eyeBlur)" opacity="0.95"/>
+  </g>
+
+  <!-- Mouth: small terminal-like cursor mark, hinting at "browser/CLI" -->
+  <g fill="#0b1220" opacity="0.75">
+    <rect x="246" y="296" width="20" height="3" rx="1.5"/>
+    <rect x="234" y="306" width="44" height="3" rx="1.5"/>
+  </g>
+
+  <!-- Faint underscore mark (Be_Ghost) -->
+  <rect x="160" y="436" width="192" height="6" rx="3" fill="#22d3ee" opacity="0.55"/>
+</svg>

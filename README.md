@@ -1,3 +1,14 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Be_Ghost — ultra-lightweight stealth browser" width="100%">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-22d3ee.svg"></a>
+  <a href="https://www.python.org/downloads/"><img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-7c3aed.svg"></a>
+  <img alt="Tests: 54 passing" src="https://img.shields.io/badge/tests-54%20passing-22c55e.svg">
+  <img alt="Lite mode: ~20 MB RAM" src="https://img.shields.io/badge/lite%20mode-~20%20MB%20RAM-bae6fd.svg">
+</p>
+
 # Be_Ghost
 
 Hybrid stealth browser. Two engines in one API:
